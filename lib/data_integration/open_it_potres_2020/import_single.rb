@@ -2,7 +2,8 @@ class DataIntegration::OpenItPotres2020
   class ImportSingle
     extend ClassFunctional
 
-    FOREIGN_SYSTEM = 'OpenItPotres2020'
+    FOREIGN_SYSTEM = DataIntegration::OpenItPotres2020::NAME
+
 
     def self.mock opts = {}
       {"id"=>877,
@@ -54,8 +55,8 @@ class DataIntegration::OpenItPotres2020
         contact_latitude: '',
         contact_longitude: '',
 
-        created_at: Date.nil_or_parse(obj['created']),
-        updated_at: Date.nil_or_parse(obj['updated']),
+        created_at: Date.nil_or_parse(obj['created']) || Time.now,
+        updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
       }
       t.save!
 
@@ -65,8 +66,8 @@ class DataIntegration::OpenItPotres2020
 
         payload: obj,
 
-        created_at: Date.nil_or_parse(obj['created']),
-        updated_at: Date.nil_or_parse(obj['updated']),
+        created_at: Date.nil_or_parse(obj['created']) || Time.now,
+        updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
       }
       ft.save!
 
