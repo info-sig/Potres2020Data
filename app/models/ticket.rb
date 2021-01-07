@@ -26,12 +26,16 @@ class Ticket < ApplicationRecord
     end
   end
 
-
-  private
+  def really_changed
+    changed - ['updated_at']
+  end
 
   def really_changed?
-    (changed - ['updated_at']).present?
+    really_changed.present?
   end
+
+
+  private
 
   def increment_version
     self.ticket_version = self.class.sequence_nextval('ticket_version_seq')

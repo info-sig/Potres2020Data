@@ -61,7 +61,7 @@ class DataIntegration::OpenItPotres2020
         updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
       }
       t_changed = t.changed?
-      puts t.changed.inspect
+      puts t.really_changed.inspect if t.really_changed?
       t.save!
 
       ft = t.foreign_from(FOREIGN_SYSTEM, instantiate: true)
@@ -74,7 +74,7 @@ class DataIntegration::OpenItPotres2020
         updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
       }
       ft_changed = ft.changed?
-      puts ft.changed.inspect
+      puts ft.really_changed.inspect if ft.really_changed?
       ft.save!
 
       {
