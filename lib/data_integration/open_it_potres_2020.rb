@@ -1,6 +1,8 @@
 module DataIntegration
   class OpenItPotres2020
 
+    NAME = 'OpenItPotres2020'
+
     attr_accessor :opts
 
     def initialize opts = {}
