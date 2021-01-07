@@ -1,4 +1,4 @@
-module DataIntegration
+class DataIntegration::OpenItPotres2020
   class GuidSorter
     def self.known_guids
       location_guids = ["87e86d94-df5d-4eb5-9080-5a4d44a5f769", "808b965b-bbda-483a-b2fc-ab47a1b8dedf", "73c25387-b131-4396-87aa-91fcfe8a707e"]

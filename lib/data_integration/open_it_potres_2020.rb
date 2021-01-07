@@ -55,7 +55,7 @@ module DataIntegration
     def parse_additional_values values
       rv_hash = {}
       values.each do |key, value|
-        guid_alias = DataIntegration::GuidSorter.determine_where_guid_belongs(key)
+        guid_alias = DataIntegration::OpenItPotres2020::GuidSorter.determine_where_guid_belongs(key)
         if guid_alias != nil
           rv_hash.merge!({ guid_alias => value[0] })
         end
