@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_142928) do
+ActiveRecord::Schema.define(version: 2021_01_07_143339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2021_01_07_142928) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "foreign_tickets", force: :cascade do |t|
+    t.uuid "ticket_id"
+    t.string "foreign_system"
+    t.string "foreign_ticket_id"
+    t.json "payload"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ticket_id"], name: "index_foreign_tickets_on_ticket_id"
   end
 
   create_table "tickets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
