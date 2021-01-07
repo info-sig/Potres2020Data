@@ -49,6 +49,21 @@ module DataIntegration
         values: parsed_case[:values]
       }
 
+      post.merge!(parse_additional_values(parsed_case[:values]))
+    end
+
+    private
+
+    def parse_additional_values values
+      rv_hash = {}
+      values.each do |key, value|
+        guid_alias = DataIntegration::GuidSorter.determine_where_guid_belongs(key)
+        if guid_alias != nil
+          rv_hash.merge!({ guid_alias => value[0] })
+        end
+      end
+
+      rv_hash
     end
 
   end
