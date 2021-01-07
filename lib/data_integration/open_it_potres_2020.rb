@@ -5,6 +5,7 @@ module DataIntegration
 
     def initialize opts = {}
       @opts = {}
+      @api_host = opts[:api_host] || 'https://potres2020.openit.hr/api/v3/posts/'
     end
 
     def log_in
@@ -12,7 +13,37 @@ module DataIntegration
     end
 
     def fetch_cases
-      # TODO
+      response = Transporter::FaradayHttp[@api_host, method: 'GET']
+      JSON.parse(response[:body])['results']
+    end
+
+    def fetch_case idx, options = {}
+      # If body is already parsed, like in fetch_cases method, it can be passed as optional argument
+      # fetch_case(50, parsed_body: body)
+      #
+      # Otherwise it API call will be made to retrieve specific case
+      if options[:parsed_body]
+        parsed_case = options[:parsed_body].select { |record| record["id"] == idx }.first
+      else
+        url = @api_host + "#{idx}"
+        response = Transporter::FaradayHttp[url, method: 'GET']
+        parsed_case = JSON.parse(response[:body])
+      end
+
+      parsed_case = parsed_case.with_indifferent_access
+      user_id = parsed_case[:user] ? parsed_case[:user][:id] : parsed_case[:user_id]
+      {
+        post_id: parsed_case[:id],
+        user_id: user_id,
+        form_id: parsed_case[:form][:id],
+        type: parsed_case[:type],
+        title: parsed_case[:title],
+        content: parsed_case[:content],
+        status: parsed_case[:status],
+        created: parsed_case[:created],
+        updated: parsed_case[:updated],
+        values: parsed_case[:values]
+      }
     end
 
   end
