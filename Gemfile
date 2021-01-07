@@ -28,13 +28,14 @@ gem 'thwait' # a bug in Ruby 2.7 - it's not bundled by default
 # gem 'image_processing', '~> 1.2'
 
 gem 'dotenv-rails' # and dotenv for env-load
+gem 'foreman', require: false
 
 # SideKiq & SideKiq Admin
 gem 'sinatra', require: false
 gem 'sidekiq', '~> 5'
 gem 'sidekiq-scheduler', '~> 2'
 gem 'sidekiq-unique-jobs'
-gem 'redis'
+gem 'hiredis'
 gem 'connection_pool'
 
 # Reduces boot times through caching; required in config/boot.rb
