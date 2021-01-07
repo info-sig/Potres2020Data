@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   authenticate :admin_user, lambda{ |u| u.present? } do
     mount Sidekiq::Web => '/admin/sidekiq'
   end
+
+  resources :tickets, only: [:show, :index]
+
 end
