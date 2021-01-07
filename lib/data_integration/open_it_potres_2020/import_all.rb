@@ -9,6 +9,7 @@ class DataIntegration::OpenItPotres2020
       api = DataIntegration::OpenItPotres2020.new
       foreign_cases = api.fetch_cases
       foreign_cases.each do |foreign_case|
+        ::Rails.logger.debug "Importing OpenItPotres2020 ID #{foreign_case['id']}"
         ImportSingle[foreign_case]
       end
     end

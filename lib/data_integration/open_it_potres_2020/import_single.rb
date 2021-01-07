@@ -54,8 +54,8 @@ class DataIntegration::OpenItPotres2020
         contact_latitude: '',
         contact_longitude: '',
 
-        created_at: Date.parse(obj['created']),
-        updated_at: Date.parse(obj['updated']),
+        created_at: Date.nil_or_parse(obj['created']),
+        updated_at: Date.nil_or_parse(obj['updated']),
       }
       t.save!
 
