@@ -49,6 +49,7 @@ module Transporter
           body: response.env.body,
           status: response.env.body
         }
+        binding.pry
       end
       secure_logger&.log("Response: \n#{rv}")
       rv

@@ -8,7 +8,7 @@ raise "don't want to run tests if DATABASE_URL is set, I'm scared to drop a prod
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
+  # parallelize(workers: :number_of_processors)
   # Add more helper methods to be used by all tests here...
 
   def setup
@@ -29,6 +29,10 @@ class ActiveSupport::TestCase
 
   def api_exchange
     $faked_api_exchange
+  end
+
+  def api_exchange= arg
+    $faked_api_exchange = arg
   end
 
   def assert_equal_or_nil exp, act, msg = 'is bonky'
