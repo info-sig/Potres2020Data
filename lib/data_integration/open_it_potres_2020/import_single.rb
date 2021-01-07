@@ -44,44 +44,44 @@ class DataIntegration::OpenItPotres2020
       t = Ticket.where(foreign_system: FOREIGN_SYSTEM, foreign_ticket_id: obj['id']).first_or_initialize
 
       parsed_value_data = DataIntegration::OpenItPotres2020.new.parse_additional_values(obj["values"])
-        t.attributes = {
-          title: obj['title'],
-          content: obj['content'],
-          status: obj['status'],
+      t.attributes = {
+        title: obj['title'],
+        content: obj['content'],
+        status: obj['status'],
 
-          foreign_reporting_user_id: obj.dig('user', 'id'),
+        foreign_reporting_user_id: obj.dig('user', 'id'),
 
-          contact_phone: parsed_value_data[:contact],
-          contact_address: '',
+        contact_phone: parsed_value_data[:contact],
+        contact_address: '',
 
-          contact_longitude: parsed_value_data[:location]["lon"],
-          contact_latitude: parsed_value_data[:location]["lat"],
+        contact_longitude: parsed_value_data.dig(:location, "lon"),
+        contact_latitude: parsed_value_data(:location, "lat"),
 
-          created_at: Date.nil_or_parse(obj['created']) || Time.now,
-          updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
-        }
-        t_changed = t.changed?
-        t.save!
+        created_at: Date.nil_or_parse(obj['created']) || Time.now,
+        updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
+      }
+      t_changed = t.changed?
+      t.save!
 
-        ft = t.foreign_from(FOREIGN_SYSTEM, instantiate: true)
-        ft.attributes = {
-          foreign_url: obj['url'],
+      ft = t.foreign_from(FOREIGN_SYSTEM, instantiate: true)
+      ft.attributes = {
+        foreign_url: obj['url'],
 
-          payload: obj,
+        payload: obj,
 
-          created_at: Date.nil_or_parse(obj['created']) || Time.now,
-          updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
-        }
-        ft_changed = ft.changed?
-        ft.save!
+        created_at: Date.nil_or_parse(obj['created']) || Time.now,
+        updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
+      }
+      ft_changed = ft.changed?
+      ft.save!
 
-        {
-          t: t,
-          ft: ft,
-          t_changed: t_changed,
-          ft_changed: ft_changed
-        }
-      end
+      {
+        t: t,
+        ft: ft,
+        t_changed: t_changed,
+        ft_changed: ft_changed
+      }
+    end
 
   end
 end
