@@ -30,9 +30,11 @@ module DataIntegration
         parsed_case = JSON.parse(response[:body])
       end
 
+      return if parsed_case == nil
       parsed_case = parsed_case.with_indifferent_access
       user_id = parsed_case[:user] ? parsed_case[:user][:id] : parsed_case[:user_id]
-      {
+
+      post = {
         post_id: parsed_case[:id],
         user_id: user_id,
         form_id: parsed_case[:form][:id],
@@ -44,6 +46,7 @@ module DataIntegration
         updated: parsed_case[:updated],
         values: parsed_case[:values]
       }
+
     end
 
   end
