@@ -6,6 +6,8 @@ namespace :db do
     end
   end
 
+  task :rebuild_data => ['db:schema:load', 'one_shot:import_entire_potres2020_openit_hr']
+
   namespace :test do
     desc "set up test databases"
     task :setup do
