@@ -11,7 +11,6 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = render_ticket(Ticket.find(params[:id]))
-
     respond_to do |format|
       format.html { render :show }
       format.json { render :json => @ticket.to_json }
@@ -28,6 +27,7 @@ class TicketsController < ApplicationController
       ft_attrs = ft.attributes
       system_name = ft_attrs.delete('foreign_system')
 
+      ft_attrs["payload"]["values"] = DataIntegration::OpenItPotres2020.new.parse_additional_values(ft.payload["values"])
       [system_name, ft_attrs]
     end]
 

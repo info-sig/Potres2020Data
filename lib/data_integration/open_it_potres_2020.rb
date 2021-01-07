@@ -52,8 +52,6 @@ module DataIntegration
       post.merge!(parse_additional_values(parsed_case[:values]))
     end
 
-    private
-
     def parse_additional_values values
       rv_hash = {}
       values.each do |key, value|
