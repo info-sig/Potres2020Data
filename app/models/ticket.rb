@@ -1,10 +1,14 @@
 class Ticket < ApplicationRecord
-  has_paper_trail
+  # has_paper_trail
   self.implicit_order_column = "created_at"
 
   has_many :foreign_tickets
 
   before_save :increment_version
+
+  def self.version_seq_curval
+    ActiveRecord::Base.sequence_curval 'ticket_version_seq'
+  end
 
   def foreign_from system, opts = {}
     rv = foreign_tickets.where(foreign_system: system)

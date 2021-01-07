@@ -1,5 +1,5 @@
 class ForeignTicket < ApplicationRecord
-  has_paper_trail
+  # has_paper_trail
 
   before_save :increment_version
 

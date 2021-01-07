@@ -12,12 +12,12 @@ class DataIntegration::OpenItPotres2020
       api = DataIntegration::OpenItPotres2020.new
       foreign_cases = api.fetch_cases
 
-      ActiveRecord::Base.transaction do
-        Ticket.where(foreign_system: FOREIGN_SYSTEM).update_all(status: 'disabled')
-        foreign_cases.each do |foreign_case|
-          ::Rails.logger.debug "Importing #{FOREIGN_SYSTEM} ID #{foreign_case['id']}"
-          ImportSingle[foreign_case]
-        end
+      last_version = Ticket.version_seq_curval + 1
+
+      foreign_cases.each do |foreign_case|
+        ::Rails.logger.debug "Importing #{FOREIGN_SYSTEM} ID #{foreign_case['id']}"
+        rv = ImportSingle[foreign_case]
+        # puts rv.slice(:t_changed, :ft_changed)
       end
     end
 

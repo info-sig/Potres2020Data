@@ -58,6 +58,7 @@ class DataIntegration::OpenItPotres2020
         created_at: Date.nil_or_parse(obj['created']) || Time.now,
         updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
       }
+      t_changed = t.changed?
       t.save!
 
       ft = t.foreign_from(FOREIGN_SYSTEM, instantiate: true)
@@ -69,9 +70,15 @@ class DataIntegration::OpenItPotres2020
         created_at: Date.nil_or_parse(obj['created']) || Time.now,
         updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
       }
+      ft_changed = ft.changed?
       ft.save!
 
-      t
+      {
+        t: t,
+        ft: ft,
+        t_changed: t_changed,
+        ft_changed: ft_changed
+      }
     end
 
   end

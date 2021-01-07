@@ -12,6 +12,10 @@ class ActiveRecord::Base
     connection.execute("select nextval('#{sequence}')").first["nextval"].to_i
   end
 
+  def self.sequence_curval sequence
+    connection.execute("select nextval('#{sequence}')").first["curval"].to_i
+  end
+
   # if record is not persisted this will eager-fetch the primary key column, if
   # it's persisted (or more accurately, primary key is already set), this will
   # echo the primary key value
