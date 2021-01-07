@@ -1,0 +1,5 @@
+:schedule:
+  import_potres2020_openit_hr:
+      description: "IMPORT: potres2020.openit.hr"
+      class: 'DataIntegration::OpenItPotres2020::ImportAll'
+      every: ["5m", first_in: "0s"]
