@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_143339) do
     t.uuid "ticket_id"
     t.string "foreign_system"
     t.string "foreign_ticket_id"
+    t.string "foreign_url"
     t.json "payload"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -4,6 +4,7 @@ class CreateForeignTickets < ActiveRecord::Migration[6.1]
       t.references :ticket, type: :uuid
       t.string :foreign_system
       t.string :foreign_ticket_id
+      t.string :foreign_url
       t.json :payload
 
       t.timestamps
