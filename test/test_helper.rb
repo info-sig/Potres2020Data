@@ -14,11 +14,17 @@ class ActiveSupport::TestCase
   def setup
     TestableSecureRandom.make_random!
     Sidekiq::Testing.fake!
+    $faked_api_exchange ||= []
   end
 
   def teardown
     Sidekiq::Worker.clear_all
     Timecop.return
+    if $faked_api_exchange&.any?
+      flunked_api_exchanges = $faked_api_exchange.clone
+      $faked_api_exchange = nil
+      flunk("following api exchanges are still in queue for #{@NAME}: #{flunked_api_exchanges}")
+    end
   end
 
 end
