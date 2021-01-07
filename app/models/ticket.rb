@@ -8,7 +8,8 @@ class Ticket < ApplicationRecord
   has_many :foreign_tickets
 
   before_save :increment_version, if: :really_changed?
-  after_save :notify_subscribers, if: :really_changed?
+  before_save :detect_if_should_notify, if: :really_changed?
+  after_save :notify_subscribers
 
   def self.version_seq_curval
     ActiveRecord::Base.sequence_curval 'ticket_version_seq'
@@ -46,10 +47,16 @@ class Ticket < ApplicationRecord
   end
 
   def notify_subscribers
+    return true unless @__should_notify
+
     SUBSCRIBERS.each do |url|
-      Ticket::Notifier.perform_async url, self.id
+      Ticket::Notifier.perform_in 15.seconds, url, self.id
     end
     true
+  end
+
+  def detect_if_should_notify
+    @__should_notify = really_changed?
   end
 
 end
