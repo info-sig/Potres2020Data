@@ -16,8 +16,7 @@ class DataIntegration::OpenItPotres2020
 
       foreign_cases.each do |foreign_case|
         ::Rails.logger.debug "Importing #{FOREIGN_SYSTEM} ID #{foreign_case['id']}"
-        rv = ImportSingle[foreign_case]
-        # puts rv.slice(:t_changed, :ft_changed)
+        ImportSingle[foreign_case]
       end
     end
 
