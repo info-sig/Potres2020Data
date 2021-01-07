@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.0'
 
 gem 'pg', '= 1.1.4'
 gem 'activerecord-postgresql-adapter'
+gem 'geocoder'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'

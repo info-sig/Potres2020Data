@@ -124,6 +124,7 @@ GEM
     fugit (1.4.1)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     has_scope (0.7.2)
@@ -328,6 +329,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   foreman
+  geocoder
   hiredis
   infosig-utils!
   jbuilder (~> 2.7)
