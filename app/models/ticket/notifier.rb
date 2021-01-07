@@ -8,7 +8,7 @@ class Ticket
 
     def call url, ticket_id, opts = {}
       t = Ticket.find(ticket_id)
-      Transporter::FaradayHttp[url, body: Ticket::Show[t]]
+      Transporter::FaradayHttp[url, body: Ticket::Show[t].to_json]
     end
   end
 end
