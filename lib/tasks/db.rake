@@ -6,7 +6,8 @@ namespace :db do
     end
   end
 
-  task :rebuild_data => ['db:schema:load', 'one_shot:import_entire_potres2020_openit_hr']
+  # run with DISABLE_DATABASE_ENVIRONMENT_CHECK=1 because IT DESTROYS EVERYTHING!!!
+  task :drop_and_rebuild_data => ['db:schema:load', 'one_shot:import_entire_potres2020_openit_hr']
 
   namespace :test do
     desc "set up test databases"
