@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.0'
 
 gem 'pg', '= 1.1.4'
 gem 'activerecord-postgresql-adapter'
+gem 'geocoder'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -80,3 +81,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Helper tools: https://github.com/info-sig/infosig-utils,
 # to use local version see: https://bundler.io/v1.12/git.html#local-git-repos
 gem 'infosig-utils', git: 'https://github.com/info-sig/infosig-utils', branch: 'master'
+
+# Audit logging
+gem 'paper_trail'
