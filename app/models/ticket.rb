@@ -4,7 +4,7 @@ class Ticket < ApplicationRecord
 
   has_many :foreign_tickets
 
-  before_save :increment_version
+  before_save :increment_version, if: :really_changed?
 
   def self.version_seq_curval
     ActiveRecord::Base.sequence_curval 'ticket_version_seq'
@@ -24,6 +24,13 @@ class Ticket < ApplicationRecord
     else
       rv
     end
+  end
+
+
+  private
+
+  def really_changed?
+    (changed - ['updated_at']).present?
   end
 
   def increment_version
