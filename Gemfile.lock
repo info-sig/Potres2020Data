@@ -179,6 +179,9 @@ GEM
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    paper_trail (11.1.0)
+      activerecord (>= 5.2)
+      request_store (~> 1.1)
     pg (1.1.4)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -235,6 +238,8 @@ GEM
       ffi (~> 1.0)
     redis (4.1.4)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -334,6 +339,7 @@ DEPENDENCIES
   infosig-utils!
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  paper_trail
   pg (= 1.1.4)
   pry-rails
   puma (~> 5.0)

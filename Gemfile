@@ -81,3 +81,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Helper tools: https://github.com/info-sig/infosig-utils,
 # to use local version see: https://bundler.io/v1.12/git.html#local-git-repos
 gem 'infosig-utils', git: 'https://github.com/info-sig/infosig-utils', branch: 'master'
+
+# Audit logging
+gem 'paper_trail'
