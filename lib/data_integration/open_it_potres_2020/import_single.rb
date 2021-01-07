@@ -59,6 +59,17 @@ class DataIntegration::OpenItPotres2020
       }
       t.save!
 
+      ft = t.foreign_from(FOREIGN_SYSTEM, instantiate: true)
+      ft.attributes = {
+        foreign_url: obj['url'],
+
+        payload: obj,
+
+        created_at: Date.nil_or_parse(obj['created']),
+        updated_at: Date.nil_or_parse(obj['updated']),
+      }
+      ft.save!
+
       t
     end
 
