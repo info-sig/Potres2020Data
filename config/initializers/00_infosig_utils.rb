@@ -1,4 +1,4 @@
-module Potres2020
+module ::Rails
 
   def self.heroku?
     ::Rails.env.production? && ENV['HEROKU_HOST']
@@ -16,12 +16,8 @@ module Potres2020
     !::Rails.env.production? || !!ENV['DEVELOPMENT_SYSTEM']
   end
 
-  def self.env
-    ::Rails.env
-  end
-
-  def self.root
-    ::Rails.root
+  def self.env?(arg)
+    Rails.env.send("#{arg}?")
   end
 
   def self.host_url

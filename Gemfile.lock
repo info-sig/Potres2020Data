@@ -343,7 +343,7 @@ DEPENDENCIES
   infosig-utils!
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  m
+  m (~> 1.5.0)
   pg (= 1.1.4)
   pry-rails
   puma (~> 5.0)
