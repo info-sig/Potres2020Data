@@ -129,6 +129,7 @@ GEM
     fugit (1.4.1)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     has_scope (0.7.2)
@@ -187,6 +188,9 @@ GEM
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    paper_trail (11.1.0)
+      activerecord (>= 5.2)
+      request_store (~> 1.1)
     pg (1.1.4)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -243,6 +247,8 @@ GEM
       ffi (~> 1.0)
     redis (4.1.4)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -339,11 +345,13 @@ DEPENDENCIES
   dotenv-rails
   faraday
   foreman
+  geocoder
   hiredis
   infosig-utils!
   jbuilder (~> 2.7)
   listen (~> 3.3)
   m (~> 1.5.0)
+  paper_trail
   pg (= 1.1.4)
   pry-rails
   puma (~> 5.0)

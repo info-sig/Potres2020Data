@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.0'
 
 gem 'pg', '= 1.1.4'
 gem 'activerecord-postgresql-adapter'
+gem 'geocoder'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -86,3 +87,6 @@ gem 'infosig-utils', git: 'https://github.com/info-sig/infosig-utils', branch: '
 
 # HTTP
 gem 'faraday'
+
+# Audit logging
+gem 'paper_trail'
