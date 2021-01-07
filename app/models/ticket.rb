@@ -1,9 +1,10 @@
 class Ticket < ApplicationRecord
+  has_paper_trail
   self.implicit_order_column = "created_at"
 
-  has_paper_trail
-
   has_many :foreign_tickets
+
+  before_save :increment_version
 
   def foreign_from system, opts = {}
     rv = foreign_tickets.where(foreign_system: system)
@@ -19,6 +20,10 @@ class Ticket < ApplicationRecord
     else
       rv
     end
+  end
+
+  def increment_version
+    self.ticket_version = self.class.sequence_nextval('ticket_version_seq')
   end
 
 end

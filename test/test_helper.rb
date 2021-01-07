@@ -15,6 +15,10 @@ class ActiveSupport::TestCase
     TestableSecureRandom.make_random!
     Sidekiq::Testing.fake!
     $faked_api_exchange ||= []
+
+    # ActiveRecord::Base.connection.reset_pk_sequence!('cases') # NOT A SEQUENCE!
+    # ActiveRecord::Base.connection.reset_pk_sequence!('foreign_cases')
+    ActiveRecord::Base.connection.execute('alter sequence ticket_version_seq restart;')
   end
 
   def teardown

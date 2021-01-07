@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   scope :callbacks do
     match 'OpenItPotres2020' => 'data_integration/open_it_potres2020/#callback', :via => [:post, :get], as: :data_integration_open_it_potres2020_callback
+    #match 'OpenItPotres2020' => 'data_integration/open_it_potres2020/#callback', :via => [:post, :get]#, as: :data_integration_open_it_potres2020_callback
   end
 
 end

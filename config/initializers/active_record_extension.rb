@@ -5,7 +5,11 @@ class ActiveRecord::Base
   end
 
   def self.next_pk
-    connection.execute("select nextval('#{table_name}_id_seq')").first["nextval"].to_i
+    sequence_nextval("#{table_name}_id_seq")
+  end
+
+  def self.sequence_nextval sequence
+    connection.execute("select nextval('#{sequence}')").first["nextval"].to_i
   end
 
   # if record is not persisted this will eager-fetch the primary key column, if

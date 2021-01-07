@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_143339) do
+ActiveRecord::Schema.define(version: 2021_01_07_181949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_143339) do
     t.json "payload"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "ticket_version"
     t.index ["ticket_id"], name: "index_foreign_tickets_on_ticket_id"
   end
 
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_143339) do
     t.string "contact_address"
     t.decimal "contact_latitude"
     t.decimal "contact_longitude"
-    t.integer "version"
+    t.integer "ticket_version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["foreign_system", "foreign_ticket_id"], name: "index_tickets_on_foreign_system_and_foreign_ticket_id"
