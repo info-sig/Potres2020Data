@@ -99,6 +99,7 @@ GEM
     et-orbi (1.2.4)
       tzinfo
     ffi (1.14.2)
+    foreman (0.87.2)
     fugit (1.4.1)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
@@ -268,6 +269,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   connection_pool
   dotenv-rails
+  foreman
   infosig-utils!
   jbuilder (~> 2.7)
   listen (~> 3.3)

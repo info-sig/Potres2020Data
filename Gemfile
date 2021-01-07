@@ -28,6 +28,7 @@ gem 'thwait' # a bug in Ruby 2.7 - it's not bundled by default
 # gem 'image_processing', '~> 1.2'
 
 gem 'dotenv-rails' # and dotenv for env-load
+gem 'foreman', require: false
 
 # SideKiq & SideKiq Admin
 gem 'sinatra', require: false
