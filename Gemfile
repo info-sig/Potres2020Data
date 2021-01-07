@@ -38,6 +38,12 @@ gem 'sidekiq-unique-jobs'
 gem 'hiredis'
 gem 'connection_pool'
 
+# ActiveAdmin
+gem 'activeadmin'
+gem 'devise'
+
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
