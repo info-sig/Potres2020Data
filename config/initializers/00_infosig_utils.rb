@@ -1,4 +1,4 @@
-module ::Rails
+module Rails
 
   def self.heroku?
     ::Rails.env.production? && ENV['HEROKU_HOST']
