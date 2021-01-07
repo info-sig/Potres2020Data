@@ -35,7 +35,7 @@ gem 'sinatra', require: false
 gem 'sidekiq', '~> 5'
 gem 'sidekiq-scheduler', '~> 2'
 gem 'sidekiq-unique-jobs'
-gem 'redis'
+gem 'hiredis'
 gem 'connection_pool'
 
 # Reduces boot times through caching; required in config/boot.rb
