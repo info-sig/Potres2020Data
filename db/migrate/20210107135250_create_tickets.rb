@@ -19,5 +19,6 @@ class CreateTickets < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :tickets, [:foreign_system, :foreign_ticket_id]
   end
 end

@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_143339) do
     t.integer "version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["foreign_system", "foreign_ticket_id"], name: "index_tickets_on_foreign_system_and_foreign_ticket_id"
   end
 
   create_table "versions", force: :cascade do |t|

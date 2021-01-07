@@ -7,8 +7,10 @@ class DataIntegration::OpenItPotres2020
 
     def call
       api = DataIntegration::OpenItPotres2020.new
-      rv = api.fetch_cases
-      binding.pry
+      foreign_cases = api.fetch_cases
+      foreign_cases.each do |foreign_case|
+        ImportSingle[foreign_case]
+      end
     end
 
   end
