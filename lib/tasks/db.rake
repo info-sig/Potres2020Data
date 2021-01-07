@@ -2,7 +2,7 @@ namespace :db do
 
   namespace :backend do
     task :install => :environment do
-      log_and_go{ ActiveRecord::Base.connection.execute('CREATE SEQUENCE ticket_version_seq START 10000;') }
+      log_and_go{ ActiveRecord::Base.connection.execute('CREATE SEQUENCE IF NOT EXISTS ticket_version_seq START 10000;') }
     end
   end
 
