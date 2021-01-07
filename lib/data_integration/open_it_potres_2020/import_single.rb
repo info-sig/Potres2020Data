@@ -55,7 +55,7 @@ class DataIntegration::OpenItPotres2020
         contact_address: '',
 
         contact_longitude: parsed_value_data.dig(:location, "lon"),
-        contact_latitude: parsed_value_data(:location, "lat"),
+        contact_latitude: parsed_value_data.dig(:location, "lat"),
 
         created_at: Date.nil_or_parse(obj['created']) || Time.now,
         updated_at: Date.nil_or_parse(obj['updated']) || Time.now,
